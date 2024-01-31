@@ -25,23 +25,23 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && isset($_POST['editar_produto'])) {
     }
 }
 
-$sql = "SELECT pro_id, pro_nome, pro_descricao, pro_custo, pro_descricao, pro_preco, pro_quantidade FROM produtos WHERE pro_status = 's'";
+$sql = "SELECT pro_id, pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade, pro_status FROM produtos WHERE pro_status = 's'";
 $retorno = mysqli_query($link, $sql);
 $ativo = "s";
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST'){
     $ativo = isset($_POST['ativo']) ? $_POST['ativo'] : 's';
      if($ativo == 's'){
-        $sql = "SELECT pro_id, pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade FROM produtos 
+        $sql = "SELECT pro_id, pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade, pro_status FROM produtos 
         WHERE pro_status = 's'";
         $retorno = mysqli_query($link, $sql);
      }
      else if($ativo == "todos"){
-        $sql = "SELECT pro_id, pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade FROM produtos";
+        $sql = "SELECT pro_id, pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade, pro_status FROM produtos";
         $retorno = mysqli_query($link, $sql);
      }
      else{
-        $sql = "SELECT pro_id, pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade FROM produtos 
+        $sql = "SELECT pro_id, pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade, pro_status FROM produtos 
         WHERE pro_status = 'n'";
         $retorno = mysqli_query($link, $sql);
      }
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST'){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,11 +69,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST'){
         <table border="2">
             <tr>
                 <th>NOME</th>
-                <th>QUANTIDADE</th>
+                <th>DESCRIÇÃO</th>
                 <th>CUSTO</th>
                 <th>PREÇO</th>
-                <th>ALTERAR</th>
+                <th>QUANTIDADE</th>
                 <th>STATUS</th>
+                <th>ALTERAR</th> 
             </tr>
             <!-- TRAZENDO DADOS DA TABELA -->
         <?php
@@ -82,10 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST'){
         <tr>
         <td><?= $tbl[1] ?></td> <!--COLETA NOME DA QUERY-->
         <td><?= $tbl[2] ?></td>
-        <td><?= $tbl[5] ?></td> <!-- Corrigindo para usar o índice correto para a quantidade -->
         <td><?= number_format($tbl[3], 2, ',', '.') ?></td>
         <td><?= number_format($tbl[4], 2, ',', '.') ?></td>
-        <td><a href="alteraproduto.php?id=<?= $tbl[0] ?>"><input type="button" value="ALTERAR"></td>
+        <td><?= $tbl[5] ?></td>
+        <td><?= $tbl[6] ?></td>
+        <td><a href="alteraproduto.php?id=<?= $tbl[0] ?>"><input type="button" value="ALTERAR"></a></td>
+        
     </tr>
         <?php
             }
