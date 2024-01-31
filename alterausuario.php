@@ -14,15 +14,6 @@ while ($tbl = mysqli_fetch_array($retorno)){
     $senha = $tbl[2];
     $status = $tbl[3];
 
-    // Executando a consulta SQL de atualização
-    $sql = "UPDATE usuarios SET usu_login = '$login', usu_email = '$email', usu_senha = '$senha', usu_status = '$status' WHERE usu_id = '$id'";
-    $resultado = mysqli_query($link, $sql);
-
-    if ($resultado) {
-        echo "Atualização realizada com sucesso!";
-    } else {
-        echo "Erro na atualização: " . mysqli_error($link);
-    }
 }
 
 ?>
