@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>LOGIN</title>
+  </head>
+  <body>
+    <div id="container">
+    <div id="login">
+      <form action="login.php" method="post">
+        <label>EMAIL</label>
+        <input
+          type="email" name="email" id="email" placeholder="@email.com" required/>
+        <label>CPF</label>
+        <input
+          type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required/>
+        <input type="submit" value="LOGIN" />
+      </form>
+      <h5>
+        <a href="#" id="toggleCadastra"> NÃO TEM CONTA? CLIQUE AQUI</a>
+      </h5>
+    </div>
+
+    <div id="cadastra">
+        <form action="cadastra.php" method="post">
+            <label>NOME</label>
+            <input type="text" name='name' id="name" placeholder="Nome Completo" required/>
+    
+            <label>EMAIL</label>
+            <input type="email"  name='email' id="email" placeholder="@gmail.com" required/>
+    
+            <label>TELEFONE</label>
+            <input type="text" name="number" id="number" placeholder="(DDD) 0000-0000" required/>
+    
+            <label>CPF</label>
+            <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required/>
+    
+            <label>CURSO</label>
+            <input type="text" name="curso" id="curso" placeholder="Tecnologia da informação" required/>
+    
+            <label>SALA</label>
+            <input type="text" name="sala" id="sala" placeholder="26" required/>
+
+            <input type="submit" value="CADASTRAR" />
+            
+            <h5>
+                <a href="#" id="toggleLogin">TEM CONTA? CLIQUE AQUI</a>
+              </h5>
+          </form>
+        </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
